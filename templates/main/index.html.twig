@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+
+{% if app.user %}
+<div class="example-wrapper">
+
+    {% if is_granted('ROLE_ADMIN') %}
+    <br><br>
+        <a style="border: solid 3px black; padding: 10px;" href="{{ path('app_pokemons_new') }}">Crear pokemon</a>
+            <br><br><br>
+    {% endif %}
+    
+	<a style="border: solid 3px black; padding: 10px;" href="{{ path('app_pokedex_capturar') }}">Capturar pokemon</a>	
+
+{% if app.user %}
+    <h1>Captura los pokemons para ser el mejor entrenador</h1>
+    {% for poke in pokemon %}
+        {# <p>{{poke.pokemon}}<p/> #}
+
+        {% for p in poke.pokemon %}
+
+        <div style="border:solid 3px; width: 200px; text-align: center; padding: 10px;">
+                <h2>{{p.nombre}}</h2>
+                <span><a  href="{{ path('app_pokedex_subir', {'id': poke.id}) }}">Subir nivel</a></span>
+                <p>Nivel: {{poke.nivel}}</p>
+                <p>Fuerza: {{poke.fuerza}}</p>
+                <span><a  href="{{ path('app_batallas_luchar', {'id': poke.id}) }}">Luchar con {{p.nombre}}</a></span>
+
+        </div>
+        <br>
+                
+            
+        {% endfor %}
+    {% endfor %}
+    
+{% endif %}
+</div>
+    
+{% endif %}
+{% endblock %}

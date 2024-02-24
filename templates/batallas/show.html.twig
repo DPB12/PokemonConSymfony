@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Batallas{% endblock %}
+
+{% block body %}
+    <h1>Batallas</h1>
+
+ <p>Pokemon contrario</p>
+  <p>{{pokemonEne.nombre}}</p>
+ <p>{{fuerza}}</p>
+ <p>{{nivel}}</p>
+ <p>Tu pokemon </p>
+ <p>{{tuPokemon.fuerza}}</p>
+  <p>{{tuPokemon.nivel}}</p>
+
+  {% if ganador == 1 %}
+    <p>Has ganado</p>
+  {% endif %}
+
+   {% if ganador == 0 %}
+    <p>Has perdido</p>
+  {% endif %}
+
+{% endblock %}
