@@ -104,5 +104,12 @@ class TusPokemons
         return $this;
     }
 
+    public function levelUp(): static
+    {
+        $this->nivel += 1;
+        
+        return $this;
+    }
+
 
 }

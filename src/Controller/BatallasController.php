@@ -31,8 +31,8 @@ class BatallasController extends AbstractController
 
 
 
-        $fuerza = rand(0, 20);
-        $nivel = rand(1,1);
+        $fuerza = rand(0, 200);
+        $nivel = rand(1,3);
         $poke = $pokemonsRepository->findAll();
         $num = count($poke) - 1;
         $pokeEne = $poke[$num];
@@ -59,6 +59,8 @@ class BatallasController extends AbstractController
         }else{
             $batalla->setResultado(1);
             $ganador = 1;
+            $tuPokemon->levelUp();
+            $entityManager->persist($tuPokemon);
             $entityManager->persist($batalla);
             $entityManager->flush();
 
